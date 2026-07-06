@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { isDashboardAuthenticated } from '@/lib/dashboard-auth'
+import { getAppUrl } from '@/lib/app-url'
 import { sendActivationEmail } from '@/lib/email'
 import { createRegistration, getRegistrations } from '@/lib/registrations'
 
@@ -46,7 +47,10 @@ export async function POST(request: Request) {
     courseGoal: typeof body.courseGoal === 'string' ? body.courseGoal : '',
     comment: typeof body.comment === 'string' ? body.comment : '',
   })
-  const activationLink = new URL(`/activate/${registration.activationToken}`, request.url).toString()
+  const activationLink = new URL(
+    `/activate/${registration.activationToken}`,
+    getAppUrl(request.url),
+  ).toString()
   let emailDelivery = 'sent'
 
   try {
