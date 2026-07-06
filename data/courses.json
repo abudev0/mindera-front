@@ -1,0 +1,51 @@
+[
+  {
+    "id": "foundation",
+    "title": "English Foundation",
+    "level": "Beginner",
+    "duration": "3 oy",
+    "lessons": 36,
+    "price": 1200000,
+    "description": "Grammatika, talaffuz va kundalik suhbat uchun asosiy ko‘nikmalar.",
+    "features": [
+      "Shaxsiy mentor bilan individual darslar",
+      "Tezkor natija va kuchli nazorat",
+      "O‘quvchiga mos maxsus SPEAKING reja",
+      "Endi gapira boshlashni xohlovchilar uchun"
+    ],
+    "createdAt": "1970-01-01T00:00:00.000Z",
+    "updatedAt": "1970-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "speaking",
+    "title": "Speaking Intensive",
+    "level": "Elementary - Intermediate",
+    "duration": "2 oy",
+    "lessons": 24,
+    "price": 950000,
+    "description": "Jonli dialoglar, role-play va fikrni ravon ifodalash mashqlari.",
+    "features": [
+      "Har darsda speaking practice",
+      "Xatolar bo‘yicha individual feedback",
+      "Real vaziyatlar uchun dialoglar"
+    ],
+    "createdAt": "1970-01-01T00:00:00.000Z",
+    "updatedAt": "1970-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "ielts",
+    "title": "IELTS Preparation",
+    "level": "Intermediate+",
+    "duration": "3 oy",
+    "lessons": 40,
+    "price": 1500000,
+    "description": "Listening, Reading, Writing va Speaking bo‘yicha imtihon strategiyalari.",
+    "features": [
+      "IELTS formatidagi mock testlar",
+      "Writing va Speaking bo‘yicha baholash",
+      "Band score oshirish strategiyalari"
+    ],
+    "createdAt": "1970-01-01T00:00:00.000Z",
+    "updatedAt": "1970-01-01T00:00:00.000Z"
+  }
+]

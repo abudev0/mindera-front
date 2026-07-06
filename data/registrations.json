@@ -1,0 +1,21 @@
+[
+  {
+    "id": "a0bdc5cc-f103-4487-8541-e2d17bf89f69",
+    "name": "Abdulazizbek Abdusodiqov",
+    "phone": "937252606",
+    "email": "abdulazizbekabdusodiqov@gmail.com",
+    "telegram": "",
+    "courseGoal": "",
+    "comment": "",
+    "status": "new",
+    "activationStatus": "active",
+    "activationToken": "e0d46486-889e-4dec-baba-546a42f41b9a",
+    "passwordHash": "c78e7228c7c22975e148931909d720b8:d480262619fb99e7bb82d9dbcec4e6e493dc210ce8a18718e761eced8cad6fac25592deee7ab39865cf4aa0dd0640875f8d8284f9312fcd9308aa2ddbd13d00c",
+    "authProvider": "email",
+    "googleId": "",
+    "sessionToken": "0cd2fa08-659c-4532-a536-b0d161f060f9",
+    "activatedAt": "2026-07-05T12:53:03.826Z",
+    "createdAt": "2026-07-05T12:52:39.920Z",
+    "updatedAt": "2026-07-05T12:53:45.279Z"
+  }
+]
