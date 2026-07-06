@@ -1,5 +1,4 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
-import path from 'node:path'
+import { getCollection } from '@/lib/mongodb'
 
 export type TransactionStatus = 'pending' | 'paid' | 'failed' | 'refunded'
 
@@ -16,35 +15,39 @@ export type Transaction = {
   createdAt: string
 }
 
-const dataDir = path.join(process.cwd(), 'data')
-const dataFile = path.join(dataDir, 'transactions.json')
+export async function getTransactions(): Promise<Transaction[]> {
+  const collection = await getTransactionsCollection()
+  const transactions = await collection
+    .find({}, { projection: { _id: 0 } })
+    .sort({ createdAt: -1, paidAt: -1 })
+    .toArray()
 
-async function ensureDataFile() {
-  await mkdir(dataDir, { recursive: true })
-
-  try {
-    await readFile(dataFile, 'utf8')
-  } catch {
-    await writeFile(dataFile, '[]', 'utf8')
-  }
+  return transactions.map(normalizeTransaction)
 }
 
-export async function getTransactions(): Promise<Transaction[]> {
-  await ensureDataFile()
-  const raw = await readFile(dataFile, 'utf8')
+async function getTransactionsCollection() {
+  const collection = await getCollection<Transaction>('transactions')
+  await Promise.all([
+    collection.createIndex({ id: 1 }, { unique: true }),
+    collection.createIndex({ userId: 1 }),
+    collection.createIndex({ userEmail: 1 }),
+    collection.createIndex({ status: 1 }),
+  ])
 
-  return (JSON.parse(raw) as Transaction[])
-    .map((transaction) => ({
-      id: transaction.id,
-      userId: transaction.userId ?? '',
-      userName: transaction.userName ?? '',
-      userEmail: transaction.userEmail ?? '',
-      courseId: transaction.courseId ?? '',
-      courseTitle: transaction.courseTitle ?? '',
-      amount: Number(transaction.amount) || 0,
-      status: transaction.status ?? 'pending',
-      paidAt: transaction.paidAt ?? '',
-      createdAt: transaction.createdAt ?? '',
-    }))
-    .sort((a, b) => new Date(b.createdAt || b.paidAt).getTime() - new Date(a.createdAt || a.paidAt).getTime())
+  return collection
+}
+
+function normalizeTransaction(transaction: Transaction): Transaction {
+  return {
+    id: transaction.id,
+    userId: transaction.userId ?? '',
+    userName: transaction.userName ?? '',
+    userEmail: transaction.userEmail ?? '',
+    courseId: transaction.courseId ?? '',
+    courseTitle: transaction.courseTitle ?? '',
+    amount: Number(transaction.amount) || 0,
+    status: transaction.status ?? 'pending',
+    paidAt: transaction.paidAt ?? '',
+    createdAt: transaction.createdAt ?? '',
+  }
 }

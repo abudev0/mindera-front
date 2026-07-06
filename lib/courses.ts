@@ -1,5 +1,4 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
-import path from 'node:path'
+import { getCollection } from '@/lib/mongodb'
 
 export type Course = {
   id: string
@@ -24,81 +23,97 @@ export type CourseInput = {
   features: string[]
 }
 
-const dataDir = path.join(process.cwd(), 'data')
-const dataFile = path.join(dataDir, 'courses.json')
-
-const defaultCourses: Course[] = [
+const seedCourses: Course[] = [
   {
-    id: 'foundation',
-    title: 'English Foundation',
-    level: 'Beginner',
+    id: 'premium',
+    title: 'Premium',
+    level: 'Individual + Intensiv',
     duration: '3 oy',
-    lessons: 36,
-    price: 1200000,
-    description: 'Grammatika, talaffuz va kundalik suhbat uchun asosiy ko‘nikmalar.',
+    lessons: 60,
+    price: 299,
+    description: 'Eng yuqori natija va eng qisqa vaqt uchun 100% individual speaking dasturi.',
     features: [
-      'Shaxsiy mentor bilan individual darslar',
+      'Shaxsiy mentor bilan 100% individual darslar',
       'Tezkor natija va kuchli nazorat',
       'O‘quvchiga mos maxsus SPEAKING reja',
-      'Endi gapira boshlashni xohlovchilar uchun',
+      'Eng tez gapira boshlashni xohlovchilar uchun',
+      '3 oyda gapira olmasangiz — 100% pul qaytariladi',
     ],
     createdAt: new Date(0).toISOString(),
     updatedAt: new Date(0).toISOString(),
   },
   {
-    id: 'speaking',
-    title: 'Speaking Intensive',
-    level: 'Elementary - Intermediate',
-    duration: '2 oy',
-    lessons: 24,
-    price: 950000,
-    description: 'Jonli dialoglar, role-play va fikrni ravon ifodalash mashqlari.',
-    features: [
-      'Har darsda speaking practice',
-      'Xatolar bo‘yicha individual feedback',
-      'Real vaziyatlar uchun dialoglar',
-    ],
-    createdAt: new Date(0).toISOString(),
-    updatedAt: new Date(0).toISOString(),
-  },
-  {
-    id: 'ielts',
-    title: 'IELTS Preparation',
-    level: 'Intermediate+',
+    id: 'recommended',
+    title: 'Tavsiya etiladi',
+    level: 'Mini-guruh intensiv (2 kishi)',
     duration: '3 oy',
-    lessons: 40,
-    price: 1500000,
-    description: 'Listening, Reading, Writing va Speaking bo‘yicha imtihon strategiyalari.',
+    lessons: 60,
+    price: 199,
+    description: "Individualga yaqin e'tibor, lekin narxi qulay bo'lgan eng balansli format.",
     features: [
-      'IELTS formatidagi mock testlar',
-      'Writing va Speaking bo‘yicha baholash',
-      'Band score oshirish strategiyalari',
+      'Individual e‘tibor saqlanadi',
+      'Ko‘proq SPEAKING mashqlar',
+      'O‘zaro muloqot orqali tez rivojlanish',
+      'Tanlangan, yaqin odamlar bilan qulay o‘rganish',
+      '3 oyda gapira olmasangiz — 100% pul qaytariladi',
+    ],
+    createdAt: new Date(0).toISOString(),
+    updatedAt: new Date(0).toISOString(),
+  },
+  {
+    id: 'popular',
+    title: 'Eng ommabop',
+    level: 'Mini-guruh intensiv (3 kishi)',
+    duration: '3 oy',
+    lessons: 60,
+    price: 149,
+    description: 'Narx va natija balansi: ko‘proq suhbat, tajriba almashish va barqaror rivojlanish.',
+    features: [
+      'Sifatli darslar — qulay narxda',
+      'Ko‘proq suhbat va tajriba almashish',
+      'Do‘stlar yoki oila bilan birga o‘rganish',
+      'Haftada 5 marta, 1.5 soatdan dars',
+      '3 oyda gapira olmasangiz — 100% pul qaytariladi',
+    ],
+    createdAt: new Date(0).toISOString(),
+    updatedAt: new Date(0).toISOString(),
+  },
+  {
+    id: 'econom',
+    title: 'Econom',
+    level: 'Mini-guruh intensiv (4-5 kishi)',
+    duration: '3 oy',
+    lessons: 60,
+    price: 99,
+    description: 'Kamroq to‘lov bilan real boshlanish: jamoaviy speaking muhiti va asosiy ko‘nikmalar.',
+    features: [
+      'Eng tejamkor variant',
+      'Jamoaviy SPEAKING muhiti',
+      'Asosiy gapirish ko‘nikmalarini shakllantirish',
+      'Boshlash uchun ideal tanlov',
+      '3 oyda gapira olmasangiz — 100% pul qaytariladi',
     ],
     createdAt: new Date(0).toISOString(),
     updatedAt: new Date(0).toISOString(),
   },
 ]
 
-async function ensureDataFile() {
-  await mkdir(dataDir, { recursive: true })
-
-  try {
-    await readFile(dataFile, 'utf8')
-  } catch {
-    await writeFile(dataFile, JSON.stringify(defaultCourses, null, 2), 'utf8')
-  }
-}
-
 export async function getCourses(): Promise<Course[]> {
-  await ensureDataFile()
-  const raw = await readFile(dataFile, 'utf8')
+  const collection = await getCoursesCollection()
+  const count = await collection.countDocuments()
 
-  return (JSON.parse(raw) as Course[]).map(normalizeCourse)
+  if (count === 0) {
+    await collection.insertMany(seedCourses)
+  }
+
+  const courses = await collection.find({}, { projection: { _id: 0 } }).toArray()
+
+  return courses.map(normalizeCourse)
 }
 
 export async function createCourse(input: CourseInput): Promise<Course> {
   const now = new Date().toISOString()
-  const courses = await getCourses()
+  const collection = await getCoursesCollection()
   const course: Course = {
     id: crypto.randomUUID(),
     ...normalizeCourseInput(input),
@@ -106,47 +121,39 @@ export async function createCourse(input: CourseInput): Promise<Course> {
     updatedAt: now,
   }
 
-  courses.unshift(course)
-  await writeCourses(courses)
+  await collection.insertOne(course)
 
   return course
 }
 
 export async function updateCourse(id: string, input: CourseInput): Promise<Course | null> {
-  const courses = await getCourses()
-  const index = courses.findIndex((course) => course.id === id)
+  const collection = await getCoursesCollection()
+  const result = await collection.findOneAndUpdate(
+    { id },
+    {
+      $set: {
+        ...normalizeCourseInput(input),
+        updatedAt: new Date().toISOString(),
+      },
+    },
+    { projection: { _id: 0 }, returnDocument: 'after' },
+  )
 
-  if (index === -1) {
-    return null
-  }
-
-  courses[index] = {
-    ...courses[index],
-    ...normalizeCourseInput(input),
-    updatedAt: new Date().toISOString(),
-  }
-
-  await writeCourses(courses)
-
-  return courses[index]
+  return result ? normalizeCourse(result) : null
 }
 
 export async function deleteCourse(id: string): Promise<boolean> {
-  const courses = await getCourses()
-  const nextCourses = courses.filter((course) => course.id !== id)
+  const collection = await getCoursesCollection()
+  const result = await collection.deleteOne({ id })
 
-  if (nextCourses.length === courses.length) {
-    return false
-  }
-
-  await writeCourses(nextCourses)
-
-  return true
+  return result.deletedCount > 0
 }
 
-async function writeCourses(courses: Course[]) {
-  await mkdir(dataDir, { recursive: true })
-  await writeFile(dataFile, JSON.stringify(courses, null, 2), 'utf8')
+async function getCoursesCollection() {
+  const collection = await getCollection<Course>('courses')
+  await collection.createIndex({ id: 1 }, { unique: true })
+
+  return collection
 }
 
 function normalizeCourse(course: Course): Course {

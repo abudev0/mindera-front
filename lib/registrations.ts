@@ -1,6 +1,5 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto'
-import path from 'node:path'
+import { getCollection } from '@/lib/mongodb'
 
 export type RegistrationStatus = 'new' | 'contacted' | 'enrolled' | 'rejected'
 export type ActivationStatus = 'pending' | 'active'
@@ -35,47 +34,24 @@ export type RegistrationInput = {
   comment?: string
 }
 
-const dataDir = path.join(process.cwd(), 'data')
-const dataFile = path.join(dataDir, 'registrations.json')
-
-async function ensureDataFile() {
-  await mkdir(dataDir, { recursive: true })
-
-  try {
-    await readFile(dataFile, 'utf8')
-  } catch {
-    await writeFile(dataFile, '[]', 'utf8')
-  }
-}
-
 export async function getRegistrations(): Promise<Registration[]> {
-  await ensureDataFile()
-  const raw = await readFile(dataFile, 'utf8')
-  const registrations = (JSON.parse(raw) as Registration[]).map((registration) => ({
-    ...registration,
-    email: registration.email ?? '',
-    activationStatus: registration.activationStatus ?? 'pending',
-    activationToken: registration.activationToken ?? crypto.randomUUID(),
-    passwordHash: registration.passwordHash ?? '',
-    authProvider: registration.authProvider ?? 'email',
-    googleId: registration.googleId ?? '',
-    sessionToken: registration.sessionToken ?? '',
-    activatedAt: registration.activatedAt ?? null,
-  }))
+  const collection = await getRegistrationsCollection()
+  const registrations = await collection
+    .find({}, { projection: { _id: 0 } })
+    .sort({ createdAt: -1 })
+    .toArray()
 
-  return registrations.sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  )
+  return registrations.map(normalizeRegistration)
 }
 
 export async function createRegistration(input: RegistrationInput): Promise<Registration> {
   const now = new Date().toISOString()
-  const registrations = await getRegistrations()
+  const collection = await getRegistrationsCollection()
   const email = input.email.trim().toLowerCase()
-  const existingRegistration = registrations.find((registration) => registration.email === email)
+  const existingRegistration = await collection.findOne({ email }, { projection: { _id: 0 } })
 
   if (existingRegistration) {
-    return existingRegistration
+    return normalizeRegistration(existingRegistration)
   }
 
   const registration: Registration = {
@@ -98,8 +74,7 @@ export async function createRegistration(input: RegistrationInput): Promise<Regi
     updatedAt: now,
   }
 
-  registrations.unshift(registration)
-  await writeFile(dataFile, JSON.stringify(registrations, null, 2), 'utf8')
+  await collection.insertOne(registration)
 
   return registration
 }
@@ -108,44 +83,47 @@ export async function setRegistrationPassword(
   token: string,
   password: string,
 ): Promise<Registration | null> {
-  const registrations = await getRegistrations()
-  const index = registrations.findIndex((registration) => registration.activationToken === token)
+  const collection = await getRegistrationsCollection()
+  const registration = await collection.findOne({ activationToken: token }, { projection: { _id: 0 } })
 
-  if (index === -1) {
+  if (!registration) {
     return null
   }
 
   const now = new Date().toISOString()
-  registrations[index] = {
-    ...registrations[index],
-    activationStatus: 'active',
-    passwordHash: hashPassword(password),
-    sessionToken: crypto.randomUUID(),
-    activatedAt: registrations[index].activatedAt ?? now,
-    updatedAt: now,
-  }
+  const result = await collection.findOneAndUpdate(
+    { activationToken: token },
+    {
+      $set: {
+        activationStatus: 'active',
+        passwordHash: hashPassword(password),
+        sessionToken: crypto.randomUUID(),
+        activatedAt: registration.activatedAt ?? now,
+        updatedAt: now,
+      },
+    },
+    { projection: { _id: 0 }, returnDocument: 'after' },
+  )
 
-  await writeFile(dataFile, JSON.stringify(registrations, null, 2), 'utf8')
-
-  return registrations[index]
+  return result ? normalizeRegistration(result) : null
 }
 
 export async function findRegistrationByActivationToken(token: string): Promise<Registration | null> {
-  const registrations = await getRegistrations()
-  return registrations.find((registration) => registration.activationToken === token) ?? null
+  const collection = await getRegistrationsCollection()
+  const registration = await collection.findOne({ activationToken: token }, { projection: { _id: 0 } })
+
+  return registration ? normalizeRegistration(registration) : null
 }
 
 export async function loginWithPassword(email: string, password: string): Promise<Registration | null> {
-  const registrations = await getRegistrations()
-  const index = registrations.findIndex((registration) => registration.email === email.trim().toLowerCase())
-
-  if (index === -1) {
-    return null
-  }
-
-  const registration = registrations[index]
+  const collection = await getRegistrationsCollection()
+  const registration = await collection.findOne(
+    { email: email.trim().toLowerCase() },
+    { projection: { _id: 0 } },
+  )
 
   if (
+    !registration ||
     registration.activationStatus !== 'active' ||
     !registration.passwordHash ||
     !verifyPassword(password, registration.passwordHash)
@@ -153,15 +131,18 @@ export async function loginWithPassword(email: string, password: string): Promis
     return null
   }
 
-  registrations[index] = {
-    ...registration,
-    sessionToken: crypto.randomUUID(),
-    updatedAt: new Date().toISOString(),
-  }
+  const result = await collection.findOneAndUpdate(
+    { id: registration.id },
+    {
+      $set: {
+        sessionToken: crypto.randomUUID(),
+        updatedAt: new Date().toISOString(),
+      },
+    },
+    { projection: { _id: 0 }, returnDocument: 'after' },
+  )
 
-  await writeFile(dataFile, JSON.stringify(registrations, null, 2), 'utf8')
-
-  return registrations[index]
+  return result ? normalizeRegistration(result) : null
 }
 
 export async function getRegistrationBySession(sessionToken: string): Promise<Registration | null> {
@@ -169,8 +150,10 @@ export async function getRegistrationBySession(sessionToken: string): Promise<Re
     return null
   }
 
-  const registrations = await getRegistrations()
-  return registrations.find((registration) => registration.sessionToken === sessionToken) ?? null
+  const collection = await getRegistrationsCollection()
+  const registration = await collection.findOne({ sessionToken }, { projection: { _id: 0 } })
+
+  return registration ? normalizeRegistration(registration) : null
 }
 
 export async function upsertGoogleRegistration(input: {
@@ -179,26 +162,29 @@ export async function upsertGoogleRegistration(input: {
   googleId: string
 }): Promise<Registration> {
   const now = new Date().toISOString()
-  const registrations = await getRegistrations()
+  const collection = await getRegistrationsCollection()
   const email = input.email.trim().toLowerCase()
-  const index = registrations.findIndex((registration) => registration.email === email)
+  const existingRegistration = await collection.findOne({ email }, { projection: { _id: 0 } })
 
-  if (index !== -1) {
-    registrations[index] = {
-      ...registrations[index],
-      name: registrations[index].name || input.name,
-      email,
-      authProvider: 'google',
-      googleId: input.googleId,
-      activationStatus: 'active',
-      activatedAt: registrations[index].activatedAt ?? now,
-      sessionToken: crypto.randomUUID(),
-      updatedAt: now,
-    }
+  if (existingRegistration) {
+    const result = await collection.findOneAndUpdate(
+      { email },
+      {
+        $set: {
+          name: existingRegistration.name || input.name,
+          email,
+          authProvider: 'google',
+          googleId: input.googleId,
+          activationStatus: 'active',
+          activatedAt: existingRegistration.activatedAt ?? now,
+          sessionToken: crypto.randomUUID(),
+          updatedAt: now,
+        },
+      },
+      { projection: { _id: 0 }, returnDocument: 'after' },
+    )
 
-    await writeFile(dataFile, JSON.stringify(registrations, null, 2), 'utf8')
-
-    return registrations[index]
+    return normalizeRegistration(result ?? existingRegistration)
   }
 
   const registration: Registration = {
@@ -221,8 +207,7 @@ export async function upsertGoogleRegistration(input: {
     updatedAt: now,
   }
 
-  registrations.unshift(registration)
-  await writeFile(dataFile, JSON.stringify(registrations, null, 2), 'utf8')
+  await collection.insertOne(registration)
 
   return registration
 }
@@ -231,22 +216,53 @@ export async function updateRegistrationStatus(
   id: string,
   status: RegistrationStatus,
 ): Promise<Registration | null> {
-  const registrations = await getRegistrations()
-  const index = registrations.findIndex((registration) => registration.id === id)
+  const collection = await getRegistrationsCollection()
+  const result = await collection.findOneAndUpdate(
+    { id },
+    {
+      $set: {
+        status,
+        updatedAt: new Date().toISOString(),
+      },
+    },
+    { projection: { _id: 0 }, returnDocument: 'after' },
+  )
 
-  if (index === -1) {
-    return null
+  return result ? normalizeRegistration(result) : null
+}
+
+async function getRegistrationsCollection() {
+  const collection = await getCollection<Registration>('registrations')
+  await Promise.all([
+    collection.createIndex({ id: 1 }, { unique: true }),
+    collection.createIndex({ email: 1 }, { unique: true }),
+    collection.createIndex({ activationToken: 1 }),
+    collection.createIndex({ sessionToken: 1 }),
+  ])
+
+  return collection
+}
+
+function normalizeRegistration(registration: Registration): Registration {
+  return {
+    ...registration,
+    name: registration.name ?? '',
+    phone: registration.phone ?? '',
+    email: registration.email ?? '',
+    telegram: registration.telegram ?? '',
+    courseGoal: registration.courseGoal ?? '',
+    comment: registration.comment ?? '',
+    status: registration.status ?? 'new',
+    activationStatus: registration.activationStatus ?? 'pending',
+    activationToken: registration.activationToken ?? crypto.randomUUID(),
+    passwordHash: registration.passwordHash ?? '',
+    authProvider: registration.authProvider ?? 'email',
+    googleId: registration.googleId ?? '',
+    sessionToken: registration.sessionToken ?? '',
+    activatedAt: registration.activatedAt ?? null,
+    createdAt: registration.createdAt ?? new Date(0).toISOString(),
+    updatedAt: registration.updatedAt ?? new Date(0).toISOString(),
   }
-
-  registrations[index] = {
-    ...registrations[index],
-    status,
-    updatedAt: new Date().toISOString(),
-  }
-
-  await writeFile(dataFile, JSON.stringify(registrations, null, 2), 'utf8')
-
-  return registrations[index]
 }
 
 function hashPassword(password: string) {

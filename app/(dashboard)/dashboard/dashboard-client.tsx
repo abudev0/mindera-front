@@ -722,5 +722,5 @@ function formatDate(value: string) {
 }
 
 function formatPrice(value: number) {
-  return new Intl.NumberFormat('uz-UZ').format(value) + " so'm"
+  return '$' + new Intl.NumberFormat('en-US').format(value)
 }
