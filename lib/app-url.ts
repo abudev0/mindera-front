@@ -1,3 +1,5 @@
+const productionAppUrl = 'https://www.mindera.uz'
+
 export function getAppUrl(requestUrl?: string) {
   const configuredUrl =
     process.env.APP_URL ??
@@ -10,10 +12,16 @@ export function getAppUrl(requestUrl?: string) {
   }
 
   if (requestUrl) {
-    return new URL(requestUrl).origin
+    const origin = new URL(requestUrl).origin
+
+    if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return productionAppUrl
+    }
+
+    return origin
   }
 
-  return 'http://localhost:3000'
+  return productionAppUrl
 }
 
 function normalizeUrl(value: string) {
