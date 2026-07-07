@@ -1,4 +1,4 @@
-const productionAppUrl = 'https://www.mindera.uz'
+const productionAppUrl = 'https://mindera.uz'
 
 export function getAppUrl(requestUrl?: string) {
   const configuredUrl =

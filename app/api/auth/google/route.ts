@@ -1,16 +1,17 @@
 import { NextResponse } from 'next/server'
+import { getAppUrl } from '@/lib/app-url'
 
 export const runtime = 'nodejs'
 
 export async function GET(request: Request) {
   const clientId = process.env.GOOGLE_CLIENT_ID
-  const requestUrl = new URL(request.url)
+  const appUrl = getAppUrl(request.url)
 
   if (!clientId) {
-    return NextResponse.redirect(new URL('/?auth=google_not_configured', requestUrl.origin))
+    return NextResponse.redirect(new URL('/?auth=google_not_configured', appUrl))
   }
 
-  const callbackUrl = new URL('/api/auth/google/callback', requestUrl.origin)
+  const callbackUrl = new URL('/api/auth/google/callback', appUrl)
   const authUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth')
 
   authUrl.searchParams.set('client_id', clientId)

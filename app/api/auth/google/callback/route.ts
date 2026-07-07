@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { setAuthCookie } from '@/lib/auth'
+import { getAppUrl } from '@/lib/app-url'
 import { upsertGoogleRegistration } from '@/lib/registrations'
 
 export const runtime = 'nodejs'
@@ -18,15 +19,16 @@ type GoogleUserInfo = {
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url)
+  const appUrl = getAppUrl(request.url)
   const code = requestUrl.searchParams.get('code') ?? ''
   const clientId = process.env.GOOGLE_CLIENT_ID
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET
 
   if (!code || !clientId || !clientSecret) {
-    return NextResponse.redirect(new URL('/?auth=google_failed', requestUrl.origin))
+    return NextResponse.redirect(new URL('/?auth=google_failed', appUrl))
   }
 
-  const callbackUrl = new URL('/api/auth/google/callback', requestUrl.origin)
+  const callbackUrl = new URL('/api/auth/google/callback', appUrl)
   const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -42,7 +44,7 @@ export async function GET(request: Request) {
   const tokenData = (await tokenResponse.json().catch(() => null)) as GoogleTokenResponse | null
 
   if (!tokenResponse.ok || !tokenData?.access_token) {
-    return NextResponse.redirect(new URL('/?auth=google_failed', requestUrl.origin))
+    return NextResponse.redirect(new URL('/?auth=google_failed', appUrl))
   }
 
   const profileResponse = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
@@ -51,7 +53,7 @@ export async function GET(request: Request) {
   const profile = (await profileResponse.json().catch(() => null)) as GoogleUserInfo | null
 
   if (!profileResponse.ok || !profile?.email || !profile.sub) {
-    return NextResponse.redirect(new URL('/?auth=google_failed', requestUrl.origin))
+    return NextResponse.redirect(new URL('/?auth=google_failed', appUrl))
   }
 
   const registration = await upsertGoogleRegistration({
@@ -59,7 +61,7 @@ export async function GET(request: Request) {
     name: profile.name ?? profile.email,
     googleId: profile.sub,
   })
-  const response = NextResponse.redirect(new URL('/courses', requestUrl.origin))
+  const response = NextResponse.redirect(new URL('/courses', appUrl))
   setAuthCookie(response, registration.sessionToken)
 
   return response
