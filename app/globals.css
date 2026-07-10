@@ -181,3 +181,26 @@
     display: none;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm 18mm;
+  }
+
+  .oferta-document h1,
+  .oferta-document h2 {
+    break-after: avoid;
+  }
+
+  .oferta-document p,
+  .oferta-document li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .oferta-document a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

@@ -1,19 +1,31 @@
+import Link from 'next/link'
+
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#202020] px-9 py-7 text-white md:px-12">
+    <footer className="w-full bg-[#202020] px-9 py-7 text-white print:hidden md:px-12">
       <div className="mx-auto grid max-w-[1100px] gap-10 md:grid-cols-3 md:items-start">
-        <p className="max-w-[190px] text-[22px] font-medium leading-[1.2]">
-          Barcha huquqlar himoyalangan.
-        </p>
+        <div>
+          <p className="max-w-[190px] text-[22px] font-medium leading-[1.2]">
+            Barcha huquqlar himoyalangan.
+          </p>
+          <Link
+            href="/oferta"
+            className="mt-5 inline-block border-b border-white/50 pb-1 text-[18px] font-extrabold transition-opacity hover:opacity-80"
+          >
+            Ommaviy oferta
+          </Link>
+        </div>
 
         <div>
           <h4 className="mb-5 text-[28px] font-extrabold leading-none">Yuridik manzil:</h4>
           <p className="text-[22px] font-medium leading-[1.2]">
-            Toshkent,
+            Toshkent shahri,
             <br />
             Yashnobod tumani,
             <br />
-            Olmos mahalla 58D
+            Olmos mahallasi,
+            <br />
+            Dilnur 4-berk ko&apos;chasi, 58-D
           </p>
         </div>
 

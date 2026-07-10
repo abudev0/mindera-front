@@ -9,7 +9,7 @@ export default async function CoursesPage() {
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect('/')
+    redirect('/?auth=login')
   }
 
   const courses = await getCourses()

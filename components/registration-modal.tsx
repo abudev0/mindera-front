@@ -5,17 +5,24 @@ import { useEffect, useState, type FormEvent } from 'react'
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error'
 type ModalMode = 'register' | 'login'
 
-export default function RegistrationModal() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [mode, setMode] = useState<ModalMode>('register')
+export default function RegistrationModal({
+  initialOpen = false,
+  initialMode = 'register',
+}: {
+  initialOpen?: boolean
+  initialMode?: ModalMode
+}) {
+  const [isOpen, setIsOpen] = useState(initialOpen)
+  const [mode, setMode] = useState<ModalMode>(initialMode)
   const [state, setState] = useState<SubmitState>('idle')
   const [message, setMessage] = useState('')
   const [activationLink, setActivationLink] = useState('')
 
   useEffect(() => {
-    function openModal() {
+    function openModal(event: Event) {
+      const requestedMode = (event as CustomEvent<{ mode?: ModalMode }>).detail?.mode
       setIsOpen(true)
-      setMode('register')
+      setMode(requestedMode ?? 'register')
       setState('idle')
       setMessage('')
       setActivationLink('')
@@ -26,7 +33,14 @@ export default function RegistrationModal() {
     const params = new URLSearchParams(window.location.search)
     const authStatus = params.get('auth')
 
-    if (authStatus === 'google_not_configured' || authStatus === 'google_failed') {
+    if (authStatus === 'login') {
+      setIsOpen(true)
+      setMode('login')
+      setState('idle')
+      setMessage('')
+      setActivationLink('')
+      window.history.replaceState({}, '', window.location.pathname)
+    } else if (authStatus === 'google_not_configured' || authStatus === 'google_failed') {
       setIsOpen(true)
       setMode('login')
       setState('error')
