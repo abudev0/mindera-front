@@ -12,11 +12,6 @@ export type UsdExchangeRate = {
 }
 
 export async function getUsdToUzsRate(): Promise<UsdExchangeRate> {
-  const configuredRate = Number(process.env.PAYMENT_USD_TO_UZS_RATE)
-  if (Number.isFinite(configuredRate) && configuredRate > 0) {
-    return { rate: configuredRate, date: 'configured' }
-  }
-
   const response = await fetch(CBU_USD_RATE_URL, {
     headers: { Accept: 'application/json' },
     next: { revalidate: 60 * 60 },
