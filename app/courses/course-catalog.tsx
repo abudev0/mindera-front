@@ -1,7 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { coursePlanOptions, formatUsd, getCoursePlan, type PlanMonth } from '@/lib/course-plans'
 import type { Course } from '@/lib/courses'
 
@@ -93,10 +92,27 @@ export default function CourseCatalog({ courses }: { courses: Course[] }) {
 function CoursePurchaseModal({ course, onClose }: { course: Course; onClose: () => void }) {
   const [selectedMonths, setSelectedMonths] = useState<PlanMonth>(3)
   const selectedPrice = getCoursePlan(course.price, selectedMonths)
+  const checkoutUrl = `/checkout?courseId=${encodeURIComponent(course.id)}&months=${selectedPrice.months}`
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') onClose()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-6">
-      <div className="relative max-h-full w-full max-w-[880px] overflow-y-auto rounded-[8px] bg-white text-black shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+    <div className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-black/75 px-4 py-4 sm:py-6">
+      <div className="relative mx-auto w-full max-w-[880px] rounded-[8px] bg-white text-black shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
         <button
           type="button"
           onClick={onClose}
@@ -199,12 +215,12 @@ function CoursePurchaseModal({ course, onClose }: { course: Course; onClose: () 
               </ol>
             </div>
 
-            <Link
-              href={`/checkout?courseId=${encodeURIComponent(course.id)}&months=${selectedPrice.months}`}
-              className="mt-6 flex min-h-14 w-full items-center justify-center rounded-[12px] bg-[#ffc329] px-5 text-center text-[19px] font-extrabold text-[#202020] transition-colors hover:bg-[#ffd34d]"
+            <a
+              href={checkoutUrl}
+              className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center rounded-[12px] bg-[#ffc329] px-5 text-center text-[19px] font-extrabold text-[#202020] transition-colors hover:bg-[#ffd34d]"
             >
               Buyurtmani saytda davom ettirish
-            </Link>
+            </a>
             <p className="mt-3 text-center text-[15px] font-bold leading-[1.25] text-black/50">
               Telegram faqat savol va texnik yordam uchun ishlatiladi; to‘lov u yerda qabul qilinmaydi.
             </p>
