@@ -4,17 +4,17 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '@/components/footer'
 import LegalDocumentContent, { parseLegalMarkdown } from '@/components/legal-document-content'
-import PrintButton from './print-button'
+import PrintButton from '../oferta/print-button'
 
 export const metadata: Metadata = {
-  title: 'Ommaviy oferta | Mindera',
-  description: 'MINDERA MChJ ta’lim xizmatlarini ko‘rsatish bo‘yicha ommaviy ofertasi.',
+  title: 'Maxfiylik siyosati | Mindera',
+  description: 'MINDERA MChJning shaxsga doir ma’lumotlarni qayta ishlash va himoya qilish siyosati.',
 }
 
 export const dynamic = 'force-static'
 
-export default function OfertaPage() {
-  const markdownPath = path.join(process.cwd(), 'docs', 'mindera-ommaviy-oferta.md')
+export default function PrivacyPage() {
+  const markdownPath = path.join(process.cwd(), 'docs', 'mindera-maxfiylik-siyosati.md')
   const blocks = parseLegalMarkdown(fs.readFileSync(markdownPath, 'utf8'))
 
   return (

@@ -1,8 +1,10 @@
 # “MINDERA” MChJ TA’LIM XIZMATLARINI KO‘RSATISH BO‘YICHA OMMAVIY OFERTASI
 
-**Tahrir:** 1.0  
-**E’lon qilingan sana:** 2026-yil 10-iyul  
-**Kuchga kirish sanasi:** 2026-yil 10-iyul
+**Tahrir:** 1.1
+
+**E’lon qilingan sana:** 2026-yil 13-iyul
+
+**Kuchga kirish sanasi:** 2026-yil 13-iyul
 
 Mazkur hujjat “MINDERA” mas’uliyati cheklangan jamiyatining jismoniy shaxslarga ingliz tilini o‘rgatish bo‘yicha ta’lim xizmatlarini ko‘rsatish yuzasidan ommaviy taklifi hisoblanadi.
 
@@ -73,13 +75,31 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 5.3. Buyurtmachi 1 oylik, 2 oylik yoki 3 oylik to‘lov rejasini tanlashi mumkin. Muayyan reja bo‘yicha to‘lanadigan yakuniy summa va chegirma to‘lovdan oldin Buyurtmachiga ko‘rsatiladi.
 
-5.4. To‘lov bank kartasi, bank o‘tkazmasi, to‘lov tizimi yoki Ijrochi taklif etgan boshqa qonuniy usul orqali amalga oshiriladi.
+5.4. Saytdagi onlayn to‘lov faqat Uzum Bank Internet-ekvayringi orqali amalga oshiriladi. Boshqa to‘lov usuli alohida taklif qilinsa, uning shartlari to‘lovdan oldin Buyurtmachiga ko‘rsatiladi.
 
 5.5. Ijrochi to‘lov qabul qilinganligini tasdiqlovchi qonunchilikda nazarda tutilgan elektron yoki qog‘oz shaklidagi hujjatni taqdim etadi.
 
 5.6. Buyurtmachi to‘lov qilganidan keyin Ijrochi tanlangan va to‘langan davr uchun Kurs narxini bir tomonlama oshira olmaydi. Keyinchalik e’lon qilingan yangi narxlar faqat yangi buyurtmalar yoki navbatdagi to‘lanmagan davrga nisbatan qo‘llanadi.
 
 5.7. Navbatdagi to‘lov belgilangan muddatda amalga oshirilmasa, Ijrochi qarzdorlik bartaraf etilgunga qadar O‘quvchining darslarda ishtirokini to‘xtatib turishga haqli.
+
+5.8. Bank kartasi orqali saytdagi to‘lov jarayoni quyidagi ketma-ketlikda amalga oshiriladi:
+
+1. Buyurtmachi rasmiy saytda ro‘yxatdan o‘tadi yoki akkauntiga kiradi.
+2. Kurs sahifasida Kurs va 1, 2 yoki 3 oylik to‘lov rejasini tanlaydi.
+3. Saytdagi checkout sahifasida buyurtma tarkibi, yakuniy summa, chegirma, Oferta va Maxfiylik siyosati bilan tanishib, roziligini tasdiqlaydi.
+4. “Uzum Bank orqali to‘lash” tugmasini bosadi. Shu paytda sayt buyurtmani yaratadi va Uzum Bank Internet-ekvayringining himoyalangan checkout muhitini ochadi.
+5. Buyurtmachi Uzum Bank muhitida to‘lov ma’lumotlarini kiritadi va Uzum Bank talab qilsa 3D Secure yoki boshqa qo‘shimcha autentifikatsiyadan o‘tadi.
+6. Uzum Bank operatsiyani avtorizatsiya qilganidan va sayt Bankning server xabarini tekshirganidan so‘ng to‘lov muvaffaqiyatli hisoblanadi.
+7. Sayt Buyurtmachiga Uzum Bankdan olingan to‘lov holati, buyurtma raqami va qonunchilikda nazarda tutilgan chek yoki tasdiqni ko‘rsatadi yoki yuboradi.
+
+5.9. Buyurtmachi xizmat uchun aynan 5.8-bandning 5–6-qadamlarida — Uzum Bankning himoyalangan checkout muhitida operatsiyani tasdiqlagan va Uzum Bank operatsiyani avtorizatsiya qilgan paytda to‘lovni amalga oshiradi. Kurs va muddatni tanlash, checkout sahifasiga o‘tish yoki Oferta shartlariga rozilik bildirishning o‘zi pul yechilishini anglatmaydi.
+
+5.10. Karta raqami, amal qilish muddati, CVV/CVC va 3D Secure tasdiqlash ma’lumoti Mindera administratoriga, Telegram orqali yoki saytdagi oddiy aloqa formasiga yuborilmaydi. Ushbu ma’lumotlar faqat Uzum Bank yoki uning vakolatli protsessing provayderining himoyalangan muhitida kiritiladi.
+
+5.11. Telegram Ijrochining maslahat va texnik qo‘llab-quvvatlash kanali hisoblanadi. Telegram administratoriga o‘tish buyurtmani to‘lash bosqichi emas va administrator karta rekvizitlari yoki tasdiqlash kodlarini qabul qilmaydi.
+
+5.12. To‘lov Uzum Bank tomonidan rad etilsa, uzilib qolsa yoki yakuniy holati darhol aniqlanmasa, Buyurtmachi qayta to‘lov qilishdan oldin saytdagi holatni tekshirishi yoki 16.1-banddagi kanallar orqali Ijrochiga murojaat qilishi lozim. Takroriy va texnik xatoli to‘lovlar 10-bo‘lim tartibida ko‘rib chiqiladi.
 
 ## 6. Darslarni tashkil etish
 
@@ -161,17 +181,29 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 ## 10. Kursdan voz kechish va pulni qaytarish
 
-10.1. Buyurtmachi Kursni muddatidan oldin to‘xtatish haqida Ijrochiga yozma yoki elektron ariza yuborishi mumkin.
+10.1. Ushbu bo‘limdagi pulni qaytarish tartibi faqat Kursda ma’lum muddat o‘qigan Buyurtmachiga nisbatan qo‘llanmaydi. Pul Kursdan ixtiyoriy voz kechish, takroriy yoki ortiqcha to‘lov, to‘lovdagi texnik xato, Ijrochi aybi bilan xizmat ko‘rsatilmasligi hamda qonunchilik yoki ushbu Oferta pulni qaytarishni nazarda tutgan boshqa holatlarda quyidagi tartibda qaytariladi.
 
-10.2. Bunda qaytariladigan summa Buyurtmachi to‘lagan summadan ariza kelib tushguniga qadar ko‘rsatilgan darslar qiymati, foydalanilgan materiallar hamda faqat mazkur buyurtmani bajarish uchun qilingan va hujjat bilan tasdiqlangan qaytarib bo‘lmaydigan xarajatlarni chegirish yo‘li bilan hisoblanadi.
+10.2. Buyurtmachi Kursni muddatidan oldin to‘xtatish haqida Ijrochiga yozma yoki elektron ariza yuborishi mumkin.
 
-10.3. Ko‘rsatilgan darslar qiymati, agar buyurtma tasdig‘ida boshqacha tartib belgilanmagan bo‘lsa, chegirmasiz bir oylik tarifning o‘sha oy uchun rejalashtirilgan darslar soniga bo‘lingan qiymati asosida aniqlanadi. Oldindan to‘lov uchun berilgan chegirma faqat to‘liq bajarilgan chegirmali davrga nisbatan saqlanadi.
+10.3. Kursdan ixtiyoriy voz kechilganda qaytariladigan summa Buyurtmachi to‘lagan summadan ariza kelib tushguniga qadar ko‘rsatilgan darslar qiymati, foydalanilgan materiallar hamda faqat mazkur buyurtmani bajarish uchun qilingan va hujjat bilan tasdiqlangan qaytarib bo‘lmaydigan xarajatlarni chegirish yo‘li bilan hisoblanadi.
 
-10.4. Hisoblangan qaytariladigan summa ariza ko‘rib chiqilib, zarur ma’lumotlar olinganidan keyin 10 bank kuni ichida qaytariladi.
+10.4. Ko‘rsatilgan darslar qiymati, agar buyurtma tasdig‘ida boshqacha tartib belgilanmagan bo‘lsa, chegirmasiz bir oylik tarifning o‘sha oy uchun rejalashtirilgan darslar soniga bo‘lingan qiymati asosida aniqlanadi. Oldindan to‘lov uchun berilgan chegirma faqat to‘liq bajarilgan chegirmali davrga nisbatan saqlanadi.
 
-10.5. Agar xizmat Ijrochi aybi bilan ko‘rsatilmasa yoki jiddiy kamchilik oqilona muddatda bartaraf etilmasa, Buyurtmachi kamchilikni bartaraf etish, kompensatsion dars, narxni mutanosib kamaytirish yoki ko‘rsatilmagan xizmat uchun to‘langan summani qaytarishni talab qilishga haqli.
+10.5. Agar ayni bir buyurtma uchun Buyurtmachidan ikki yoki undan ortiq marta to‘lov olingan bo‘lsa, bitta haqiqiy to‘lovdan tashqari Ijrochi hisobiga amalda kelib tushgan barcha takroriy summalar ko‘rsatilgan xizmatlar qiymati chegirilmasdan to‘liq qaytariladi.
 
-10.6. Ushbu bo‘lim qonunchilikda Buyurtmachi va O‘quvchiga berilgan huquqlarni cheklamaydi.
+10.6. Agar texnik xato tufayli karta yoki hisobdan pul yechilgan, biroq saytda buyurtma muvaffaqiyatli to‘langan deb tasdiqlanmagan bo‘lsa, Ijrochi Bank va to‘lov tizimi ma’lumotlari asosida operatsiya holatini tekshiradi. Mablag‘ Ijrochi hisobiga kelib tushgani tasdiqlansa, Buyurtmachining tanloviga ko‘ra to‘lov buyurtmaga biriktiriladi yoki to‘liq qaytariladi. Mablag‘ Ijrochi hisobiga kelib tushmagan bo‘lsa, Ijrochi Buyurtmachiga operatsiya holatini aniqlash uchun zarur tasdiqni taqdim etadi va xizmat ko‘rsatuvchi Bank yoki to‘lov tizimiga murojaat qilishda ko‘maklashadi.
+
+10.7. To‘lov summasi buyurtmada ko‘rsatilgan summadan ortiq yechilgan va ortiqcha qism Ijrochi hisobiga kelib tushgan bo‘lsa, ortiqcha olingan summa to‘liq qaytariladi.
+
+10.8. Pulni qaytarish yoki to‘lovni tekshirish uchun Buyurtmachi 16.1-banddagi aloqa kanallaridan biri orqali murojaat yuboradi. Murojaatda F.I.Sh., telefon yoki elektron pochta, Kurs va buyurtma ma’lumoti, to‘lov sanasi va summasi, to‘lov hujjati hamda zarur bo‘lsa bank kartasining faqat oxirgi to‘rtta raqami ko‘rsatiladi. Karta amal qilish muddati, SMS-kod, PIN, CVV/CVC yoki kartaning to‘liq raqamini yuborish talab etilmaydi va mumkin emas.
+
+10.9. Ijrochi murojaatni va zarur ma’lumotlarni olgach, to‘lov holatini 10 ish kunidan kechiktirmay tekshiradi va natijasi haqida Buyurtmachiga xabar beradi. Qaytarish uchun asos tasdiqlansa, summa 10 bank kuni ichida, qoida tariqasida, to‘lov amalga oshirilgan o‘sha vositaga qaytariladi. Bank yoki to‘lov tizimining mablag‘ni kartada aks ettirish muddati ushbu muddatga kirmasligi va ularning ichki qoidalariga bog‘liq bo‘lishi mumkin.
+
+10.10. Dastlabki to‘lov vositasiga qaytarish texnik yoki qonuniy jihatdan imkonsiz bo‘lsa, Ijrochi Buyurtmachini identifikatsiya qilganidan so‘ng mablag‘ni uning nomidagi bank hisobiga qonunchilik va Bank qoidalariga muvofiq qaytarishi mumkin. Pul uchinchi shaxs hisobiga qaytarilmaydi, qonuniy vakillik yoki qonunchilikda nazarda tutilgan boshqa asos hujjat bilan tasdiqlangan holatlar bundan mustasno.
+
+10.11. Agar xizmat Ijrochi aybi bilan ko‘rsatilmasa yoki jiddiy kamchilik oqilona muddatda bartaraf etilmasa, Buyurtmachi kamchilikni bartaraf etish, kompensatsion dars, narxni mutanosib kamaytirish yoki ko‘rsatilmagan xizmat uchun to‘langan summani qaytarishni talab qilishga haqli.
+
+10.12. Takroriy, texnik xato bilan amalga oshirilgan yoki ortiqcha to‘lovni qaytarishda Ijrochi tomonidan ko‘rsatilgan darslar qiymati chegirilmaydi. Ushbu bo‘lim qonunchilikda Buyurtmachi va O‘quvchiga berilgan huquqlarni cheklamaydi.
 
 ## 11. Shartnomani muzlatish va guruhni almashtirish
 
@@ -194,6 +226,8 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 13.2. Ijrochi ma’lumotlarni qonuniy asos va zarurat mavjud bo‘lgan muddat davomida saqlaydi hamda ularni himoya qilish uchun oqilona tashkiliy va texnik choralarni qo‘llaydi.
 
 13.3. O‘quvchining tasviri, ovozi, fikri yoki ta’lim natijalaridan reklama va ommaviy materiallarda foydalanish uchun alohida rozilik olinadi. Ushbu Ofertaning aksepti o‘z-o‘zidan reklama uchun foto yoki video roziligi hisoblanmaydi.
+
+13.4. Shaxsga doir ma’lumotlarni qayta ishlash, Internet-ekvayring, antifraud nazorati va ma’lumotlar xavfsizligi bo‘yicha batafsil qoidalar https://mindera.uz/maxfiylik manzilidagi Maxfiylik siyosatida belgilangan.
 
 ## 14. Javobgarlik
 
@@ -264,4 +298,3 @@ Telefon: +998 93 398 09 02
 Email: Botiraliyevyusufbek817@gmail.com  
 Sayt: https://mindera.uz  
 Telegram: @mindera_admin
-

@@ -1,15 +1,9 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import Link from 'next/link'
+import { useState } from 'react'
+import { coursePlanOptions, formatUsd, getCoursePlan, type PlanMonth } from '@/lib/course-plans'
 import type { Course } from '@/lib/courses'
-
-type PlanMonth = 1 | 2 | 3
-
-const monthOptions: Array<{ months: PlanMonth; discount: number; label: string; hook: string }> = [
-  { months: 1, discount: 0, label: '1 oy', hook: 'Boshlash uchun eng oson qadam' },
-  { months: 2, discount: 5, label: '2 oy', hook: 'Chegirma bilan barqaror davom etish' },
-  { months: 3, discount: 10, label: '3 oy', hook: 'Eng katta foyda va to‘liq natija rejasi' },
-]
 
 const courseAccents: Record<string, { badge: string; note: string }> = {
   premium: {
@@ -98,19 +92,7 @@ export default function CourseCatalog({ courses }: { courses: Course[] }) {
 
 function CoursePurchaseModal({ course, onClose }: { course: Course; onClose: () => void }) {
   const [selectedMonths, setSelectedMonths] = useState<PlanMonth>(3)
-  const selectedOption = monthOptions.find((option) => option.months === selectedMonths) ?? monthOptions[0]
-  const selectedPrice = getPlanPrice(course.price, selectedOption.months, selectedOption.discount)
-  const telegramUrl = useMemo(() => {
-    const text = [
-      `Assalomu alaykum. ${course.title} kursini sotib olmoqchiman.`,
-      `Paket: ${course.level}`,
-      `Muddat: ${selectedOption.months} oy`,
-      `Narx: ${formatUsd(selectedPrice.total)}`,
-      `Chegirma: ${selectedOption.discount}%`,
-    ].join('\n')
-
-    return `https://t.me/mindera_admin?text=${encodeURIComponent(text)}`
-  }, [course, selectedOption, selectedPrice.total])
+  const selectedPrice = getCoursePlan(course.price, selectedMonths)
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-6">
@@ -155,7 +137,7 @@ function CoursePurchaseModal({ course, onClose }: { course: Course; onClose: () 
             </h3>
 
             <div className="mt-5 grid grid-cols-3 gap-2 rounded-[8px] bg-[#f2f2f2] p-1">
-              {monthOptions.map((option) => (
+              {coursePlanOptions.map((option) => (
                 <button
                   key={option.months}
                   type="button"
@@ -172,17 +154,17 @@ function CoursePurchaseModal({ course, onClose }: { course: Course; onClose: () 
             </div>
 
             <div className="mt-5 rounded-[8px] border border-black/10 bg-[#fff8e5] p-5">
-              <p className="text-[17px] font-extrabold text-[#8a5a00]">{selectedOption.hook}</p>
+              <p className="text-[17px] font-extrabold text-[#8a5a00]">{selectedPrice.hook}</p>
               <div className="mt-4 grid gap-3">
                 <PriceLine label="Oddiy narx" value={formatUsd(selectedPrice.original)} muted />
-                <PriceLine label={`Chegirma (${selectedOption.discount}%)`} value={`-${formatUsd(selectedPrice.saving)}`} />
+                <PriceLine label={`Chegirma (${selectedPrice.discount}%)`} value={`-${formatUsd(selectedPrice.saving)}`} />
                 <PriceLine label="Siz to'laysiz" value={formatUsd(selectedPrice.total)} strong />
               </div>
             </div>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">
-              {monthOptions.map((option) => {
-                const price = getPlanPrice(course.price, option.months, option.discount)
+              {coursePlanOptions.map((option) => {
+                const price = getCoursePlan(course.price, option.months)
 
                 return (
                   <button
@@ -207,17 +189,29 @@ function CoursePurchaseModal({ course, onClose }: { course: Course; onClose: () 
               })}
             </div>
 
-            <a
-              href={telegramUrl}
-              target="_blank"
-              rel="noreferrer"
+            <div className="mt-6 rounded-[10px] border border-black/10 bg-[#f7f7f7] p-4">
+              <p className="text-[15px] font-extrabold">To‘lov qanday amalga oshiriladi?</p>
+              <ol className="mt-2 grid gap-1 text-[14px] font-bold leading-[1.4] text-black/55">
+                <li>1. Keyingi sahifada buyurtma va yakuniy summani tekshirasiz.</li>
+                <li>2. Oferta va Maxfiylik siyosatini tasdiqlaysiz.</li>
+                <li>3. Uzum Bankning himoyalangan checkout sahifasida to‘lovni tasdiqlaysiz.</li>
+                <li>4. Uzum Bank tasdiqlagach, sayt to‘lov natijasini ko‘rsatadi.</li>
+              </ol>
+            </div>
+
+            <Link
+              href={`/checkout?courseId=${encodeURIComponent(course.id)}&months=${selectedPrice.months}`}
               className="mt-6 flex min-h-14 w-full items-center justify-center rounded-[12px] bg-[#ffc329] px-5 text-center text-[19px] font-extrabold text-[#202020] transition-colors hover:bg-[#ffd34d]"
             >
-              Joyimni band qilish
-            </a>
+              Buyurtmani saytda davom ettirish
+            </Link>
             <p className="mt-3 text-center text-[15px] font-bold leading-[1.25] text-black/50">
-              Telegramda @mindera_admin bilan bog‘lanasiz.
+              Telegram faqat savol va texnik yordam uchun ishlatiladi; to‘lov u yerda qabul qilinmaydi.
             </p>
+            <div className="mt-4 flex items-center justify-center gap-3 rounded-[9px] bg-[#19191f] px-4 py-3 text-white">
+              <img src="/uzumbank-logo.svg" alt="Uzum Bank" className="h-8 w-auto" />
+              <span className="text-[13px] font-extrabold text-white/65">To‘lov faqat Uzum Bank orqali</span>
+            </div>
           </section>
         </div>
       </div>
@@ -251,16 +245,4 @@ function PriceLine({
       <span className={`text-right font-extrabold ${strong ? 'text-[30px]' : 'text-[19px]'}`}>{value}</span>
     </div>
   )
-}
-
-function getPlanPrice(monthlyPrice: number, months: number, discount: number) {
-  const original = monthlyPrice * months
-  const saving = Math.round(original * (discount / 100))
-  const total = original - saving
-
-  return { original, saving, total }
-}
-
-function formatUsd(value: number) {
-  return `$${new Intl.NumberFormat('en-US').format(value)}`
 }

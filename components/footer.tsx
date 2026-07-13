@@ -1,19 +1,28 @@
 import Link from 'next/link'
+import PaymentSecurity from '@/components/payment-security'
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#202020] px-9 py-7 text-white print:hidden md:px-12">
-      <div className="mx-auto grid max-w-[1100px] gap-10 md:grid-cols-3 md:items-start">
+    <footer className="w-full bg-[#202020] text-white print:hidden">
+      <div className="mx-auto grid max-w-[1100px] gap-10 px-9 py-7 md:grid-cols-3 md:items-start md:px-12">
         <div>
           <p className="max-w-[190px] text-[22px] font-medium leading-[1.2]">
             Barcha huquqlar himoyalangan.
           </p>
-          <Link
-            href="/oferta"
-            className="mt-5 inline-block border-b border-white/50 pb-1 text-[18px] font-extrabold transition-opacity hover:opacity-80"
-          >
-            Ommaviy oferta
-          </Link>
+          <div className="mt-5 flex flex-col items-start gap-3 text-[18px] font-extrabold">
+            <Link
+              href="/oferta"
+              className="border-b border-white/50 pb-1 transition-opacity hover:opacity-80"
+            >
+              Ommaviy oferta
+            </Link>
+            <Link
+              href="/maxfiylik"
+              className="border-b border-white/50 pb-1 transition-opacity hover:opacity-80"
+            >
+              Maxfiylik siyosati
+            </Link>
+          </div>
         </div>
 
         <div>
@@ -41,6 +50,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <PaymentSecurity />
     </footer>
   )
 }
