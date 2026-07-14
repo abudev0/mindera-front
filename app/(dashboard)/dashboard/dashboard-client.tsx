@@ -259,7 +259,7 @@ function UsersSection({
         <EmptyState>Hali foydalanuvchilar yo&apos;q.</EmptyState>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[980px] border-collapse text-left">
+          <table className="w-full min-w-[1120px] border-collapse text-left">
             <TableHeadRow>
               <TableHead>Ism familiya</TableHead>
               <TableHead>Raqam</TableHead>
@@ -408,6 +408,7 @@ function TransactionsSection({ transactions }: { transactions: Transaction[] }) 
             <TableHeadRow>
               <TableHead>Foydalanuvchi</TableHead>
               <TableHead>Email</TableHead>
+              <TableHead>Telefon</TableHead>
               <TableHead>Kurs</TableHead>
               <TableHead>Summa</TableHead>
               <TableHead>Status</TableHead>
@@ -418,11 +419,22 @@ function TransactionsSection({ transactions }: { transactions: Transaction[] }) 
                 <tr key={transaction.id} className="border-b border-black/10 align-top last:border-0">
                   <TableCell className="font-extrabold">{transaction.userName || '-'}</TableCell>
                   <TableCell>{transaction.userEmail || '-'}</TableCell>
+                  <TableCell>{transaction.userPhone || '-'}</TableCell>
                   <TableCell>{transaction.courseTitle || '-'}</TableCell>
-                  <TableCell>{formatPrice(transaction.amount)}</TableCell>
+                  <TableCell>{formatTransactionAmount(transaction.amount)}</TableCell>
                   <TableCell>
-                    <StatusPill tone={transaction.status === 'paid' ? 'green' : 'yellow'}>
-                      {transaction.status}
+                    <StatusPill
+                      tone={
+                        transaction.status === 'paid'
+                          ? 'green'
+                          : transaction.status === 'failed'
+                            ? 'red'
+                            : transaction.status === 'refunded'
+                              ? 'gray'
+                              : 'yellow'
+                      }
+                    >
+                      {formatTransactionStatus(transaction.status)}
                     </StatusPill>
                   </TableCell>
                   <TableCell>{formatDate(transaction.paidAt || transaction.createdAt)}</TableCell>
@@ -686,13 +698,22 @@ function TableCell({
   return <td className={`px-4 py-4 text-[15px] font-medium ${className}`}>{children}</td>
 }
 
-function StatusPill({ tone, children }: { tone: 'green' | 'yellow'; children: ReactNode }) {
+function StatusPill({
+  tone,
+  children,
+}: {
+  tone: 'green' | 'yellow' | 'red' | 'gray'
+  children: ReactNode
+}) {
+  const toneClass = {
+    green: 'bg-green-100 text-green-700',
+    yellow: 'bg-yellow-100 text-yellow-800',
+    red: 'bg-red-100 text-red-700',
+    gray: 'bg-gray-200 text-gray-700',
+  }[tone]
+
   return (
-    <span
-      className={`inline-flex rounded-full px-3 py-1 text-[13px] font-extrabold ${
-        tone === 'green' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-800'
-      }`}
-    >
+    <span className={`inline-flex rounded-full px-3 py-1 text-[13px] font-extrabold ${toneClass}`}>
       {children}
     </span>
   )
@@ -723,4 +744,17 @@ function formatDate(value: string) {
 
 function formatPrice(value: number) {
   return '$' + new Intl.NumberFormat('en-US').format(value)
+}
+
+function formatTransactionAmount(value: number) {
+  return `${new Intl.NumberFormat('uz-UZ').format(value)} so‘m`
+}
+
+function formatTransactionStatus(status: Transaction['status']) {
+  return {
+    pending: 'Kutilmoqda',
+    paid: "To‘langan",
+    failed: 'Bekor qilingan',
+    refunded: 'Qaytarilgan',
+  }[status]
 }

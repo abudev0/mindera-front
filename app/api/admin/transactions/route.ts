@@ -9,7 +9,15 @@ export async function GET() {
     return NextResponse.json({ message: 'Dashboardga kiring' }, { status: 401 })
   }
 
-  const transactions = await getTransactions()
+  try {
+    const transactions = await getTransactions()
 
-  return NextResponse.json({ transactions })
+    return NextResponse.json({ transactions })
+  } catch (error) {
+    console.error('Admin transactions could not be loaded', error)
+    return NextResponse.json(
+      { message: 'Uzum tranzaksiyalarini yuklab bo‘lmadi' },
+      { status: 503 },
+    )
+  }
 }
