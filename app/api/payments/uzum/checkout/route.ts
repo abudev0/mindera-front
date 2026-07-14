@@ -46,6 +46,7 @@ export async function POST(request: Request) {
           {
             sku: course.id,
             name: `${course.title} — ${plan.months} oy`,
+            months: plan.months,
             quantity: 1,
             price: totalUzs,
           },

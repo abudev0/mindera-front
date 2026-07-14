@@ -182,7 +182,7 @@ export default function RegistrationModal({
                   minLength={7}
                   type="tel"
                   className="h-[52px] rounded-[14px] border border-black/10 bg-[#f5f5f5] px-4 text-[17px] font-bold outline-none focus:border-[#ffc329]"
-                  placeholder="+998 90 123 45 67"
+                  placeholder="+1 (xxx) xxx xxxx"
                 />
               </label>
             </>

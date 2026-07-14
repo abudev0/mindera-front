@@ -30,11 +30,13 @@ type UzumOrdersResponse = {
     items: Array<{
       sku: string
       name?: string
+      months?: number
       quantity: number
       price: number
     }>
     totalPrice: number
     paymentStatus: 'pending' | 'paid' | 'cancelled' | 'refunded'
+    paidAt?: string
     createdAt: string
     updatedAt: string
   }>
@@ -66,7 +68,7 @@ export async function getTransactions(): Promise<Transaction[]> {
       courseTitle,
       amount: Number(order.totalPrice) || 0,
       status: order.paymentStatus === 'cancelled' ? 'failed' : order.paymentStatus,
-      paidAt: order.paymentStatus === 'paid' ? order.updatedAt : '',
+      paidAt: order.paymentStatus === 'paid' ? (order.paidAt ?? order.updatedAt) : '',
       createdAt: order.createdAt,
     })
   })
