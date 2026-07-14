@@ -64,10 +64,16 @@ export async function POST(request: Request) {
       paymentUrl.protocol === 'https:' &&
       (paymentUrl.hostname === 'uzumbank.uz' ||
         paymentUrl.hostname.endsWith('.uzumbank.uz') ||
+        paymentUrl.hostname === 'uzum.uz' ||
+        paymentUrl.hostname.endsWith('.uzum.uz') ||
         paymentUrl.hostname === 'uzumcheckout.uz' ||
         paymentUrl.hostname.endsWith('.uzumcheckout.uz'))
 
     if (!allowed) {
+      console.error('Uzum Checkout returned an unexpected redirect host', {
+        hostname: paymentUrl.hostname,
+        protocol: paymentUrl.protocol,
+      })
       return NextResponse.json({ message: 'Uzum Bank noto‘g‘ri redirect manzilini qaytardi' }, { status: 502 })
     }
 
