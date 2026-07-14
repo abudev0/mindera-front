@@ -62,17 +62,15 @@ export async function POST(request: Request) {
     const paymentUrl = new URL(result.paymentUrl)
     const allowed =
       paymentUrl.protocol === 'https:' &&
-      (paymentUrl.hostname === 'uzumbank.uz' ||
-        paymentUrl.hostname.endsWith('.uzumbank.uz') ||
-        paymentUrl.hostname === 'uzum.uz' ||
-        paymentUrl.hostname.endsWith('.uzum.uz') ||
-        paymentUrl.hostname === 'uzumcheckout.uz' ||
-        paymentUrl.hostname.endsWith('.uzumcheckout.uz'))
+      paymentUrl.hostname.length > 0 &&
+      paymentUrl.username === '' &&
+      paymentUrl.password === '' &&
+      (paymentUrl.port === '' || paymentUrl.port === '443')
 
     if (!allowed) {
-      console.error('Uzum Checkout returned an unexpected redirect host', {
-        hostname: paymentUrl.hostname,
-        protocol: paymentUrl.protocol,
+      console.error('Uzum Checkout returned an unsafe redirect URL', {
+        origin: paymentUrl.origin,
+        hasCredentials: Boolean(paymentUrl.username || paymentUrl.password),
       })
       return NextResponse.json({ message: 'Uzum Bank noto‘g‘ri redirect manzilini qaytardi' }, { status: 502 })
     }
