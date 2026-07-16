@@ -203,4 +203,8 @@
     color: inherit;
     text-decoration: none;
   }
+
+  .payment-logos {
+    break-inside: avoid;
+  }
 }
