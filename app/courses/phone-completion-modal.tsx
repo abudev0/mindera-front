@@ -82,7 +82,7 @@ export default function PhoneCompletionModal({ required }: { required: boolean }
               type="tel"
               inputMode="tel"
               autoComplete="tel"
-              placeholder="+998 90 123 45 67"
+              placeholder="+1 (XXX) XXX-XXXX"
               className="h-[54px] rounded-[14px] border border-black/15 bg-[#f5f5f5] px-4 text-[18px] font-bold outline-none focus:border-[#ffc329]"
             />
           </label>
