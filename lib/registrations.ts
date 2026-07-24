@@ -212,6 +212,25 @@ export async function upsertGoogleRegistration(input: {
   return registration
 }
 
+export async function updateRegistrationPhone(
+  id: string,
+  phone: string,
+): Promise<Registration | null> {
+  const collection = await getRegistrationsCollection()
+  const result = await collection.findOneAndUpdate(
+    { id },
+    {
+      $set: {
+        phone,
+        updatedAt: new Date().toISOString(),
+      },
+    },
+    { projection: { _id: 0 }, returnDocument: 'after' },
+  )
+
+  return result ? normalizeRegistration(result) : null
+}
+
 export async function updateRegistrationStatus(
   id: string,
   status: RegistrationStatus,

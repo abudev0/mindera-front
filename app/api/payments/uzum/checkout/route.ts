@@ -4,6 +4,7 @@ import { getCurrentUser } from '@/lib/auth'
 import { convertUsdToUzs, getUsdToUzsRate } from '@/lib/cbu-exchange-rate'
 import { getCoursePlan, isPlanMonth } from '@/lib/course-plans'
 import { getCourses } from '@/lib/courses'
+import { isValidPhone } from '@/lib/phone'
 import { callUzumBackend } from '@/lib/uzum-backend'
 
 type CreateOrderResponse = {
@@ -16,6 +17,12 @@ type CreateOrderResponse = {
 export async function POST(request: Request) {
   const user = await getCurrentUser()
   if (!user) return NextResponse.json({ message: 'Tizimga kiring' }, { status: 401 })
+  if (!isValidPhone(user.phone)) {
+    return NextResponse.json(
+      { message: 'To‘lovni davom ettirish uchun telefon raqamingizni kiriting' },
+      { status: 400 },
+    )
+  }
 
   const body = await request.json().catch(() => null)
   const courseId = body && typeof body.courseId === 'string' ? body.courseId : ''

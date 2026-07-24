@@ -1,7 +1,9 @@
 import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getCourses } from '@/lib/courses'
+import { isValidPhone } from '@/lib/phone'
 import CourseCatalog from './course-catalog'
+import PhoneCompletionModal from './phone-completion-modal'
 
 export const dynamic = 'force-dynamic'
 
@@ -16,6 +18,7 @@ export default async function CoursesPage() {
 
   return (
     <main className="min-h-screen bg-[#f5f5f5] px-4 py-6 text-black md:px-8">
+      <PhoneCompletionModal required={!isValidPhone(user.phone)} />
       <div className="mx-auto max-w-[1120px]">
         <header className="flex flex-col gap-4 border-b border-black/10 pb-6 md:flex-row md:items-end md:justify-between">
           <div>
