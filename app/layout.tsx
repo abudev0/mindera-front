@@ -1,10 +1,73 @@
 import { Analytics } from '@vercel/analytics/next'
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import './globals.css'
 
+const siteUrl = 'https://mindera.uz'
+
 export const metadata: Metadata = {
-  title: 'Mindera - Learn English in 3 Months',
-  description: 'Master English with IELTS preparation courses. 100% success guarantee with certified teachers.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Mindera — 3 oyda ingliz tilida gapirishni o‘rganing',
+    template: '%s | Mindera',
+  },
+  description:
+    'Mindera onlayn ingliz tili kursi: 3 oyda speaking ko‘nikmasini rivojlantiring. IELTS 7.5–9 darajadagi ustozlar bilan jonli darslar va natija kafolati.',
+  applicationName: 'Mindera',
+  authors: [{ name: 'MINDERA MChJ', url: siteUrl }],
+  creator: 'MINDERA MChJ',
+  publisher: 'MINDERA MChJ',
+  keywords: [
+    'Mindera',
+    'Mindera uz',
+    'ingliz tili kurslari',
+    'onlayn ingliz tili kursi',
+    'ingliz tilida gapirish',
+    'speaking kursi',
+    'IELTS ustozlari',
+  ],
+  alternates: {
+    canonical: '/',
+    languages: {
+      'uz-UZ': '/',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'uz_UZ',
+    url: siteUrl,
+    siteName: 'Mindera',
+    title: 'Mindera — 3 oyda ingliz tilida gapirishni o‘rganing',
+    description:
+      'IELTS 7.5–9 darajadagi ustozlar bilan jonli onlayn darslar va speaking metodikasi.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 203,
+        height: 143,
+        alt: 'Mindera ingliz tili kurslari',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mindera — onlayn ingliz tili kursi',
+    description: '3 oyda ingliz tilida gapirishni o‘rganing.',
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   icons: {
     icon: [
       {
@@ -13,6 +76,7 @@ export const metadata: Metadata = {
       }
     ]
   },
+  manifest: '/manifest.webmanifest',
 }
 
 

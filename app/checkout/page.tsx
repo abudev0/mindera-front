@@ -9,8 +9,9 @@ import { getCourses } from '@/lib/courses'
 import CheckoutConfirmation from './checkout-confirmation'
 
 export const metadata: Metadata = {
-  title: 'Buyurtmani tasdiqlash | Mindera',
+  title: 'Buyurtmani tasdiqlash',
   description: 'Mindera kursi uchun buyurtma va xavfsiz to‘lov bosqichlari.',
+  robots: { index: false, follow: false },
 }
 
 export const dynamic = 'force-dynamic'

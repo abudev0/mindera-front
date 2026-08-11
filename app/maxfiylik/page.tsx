@@ -7,8 +7,9 @@ import LegalDocumentContent, { parseLegalMarkdown } from '@/components/legal-doc
 import PrintButton from '../oferta/print-button'
 
 export const metadata: Metadata = {
-  title: 'Maxfiylik siyosati | Mindera',
+  title: 'Maxfiylik siyosati',
   description: 'MINDERA MChJning shaxsga doir ma’lumotlarni qayta ishlash va himoya qilish siyosati.',
+  alternates: { canonical: '/maxfiylik' },
 }
 
 export const dynamic = 'force-static'

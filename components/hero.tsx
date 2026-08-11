@@ -4,6 +4,9 @@ export default function Hero() {
   return (
     <section className="w-full bg-[#202020] px-4 py-8 md:px-8 md:py-14">
       <div className="mx-auto flex min-h-[200px] max-w-[1000px] flex-col items-center justify-center sm:min-h-[320px]">
+        <p className="mb-4 w-full text-left text-[13px] font-extrabold uppercase tracking-[0.16em] text-[#ffd54a] sm:mb-7 sm:text-[16px]">
+          Mindera onlayn ingliz tili kursi
+        </p>
         <h1 className="inline-flex flex-col items-start text-left text-[30px] font-extrabold leading-[1.04] text-white sm:text-[84px] sm:leading-[0.92] md:text-[112px]">
           <span className="flex items-center gap-2 sm:gap-4 md:gap-6">
             <Image

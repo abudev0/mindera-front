@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getCurrentUser } from '@/lib/auth'
-import { isValidPhone, normalizePhone } from '@/lib/phone'
+import { formatUsPhone, isValidUsPhone } from '@/lib/phone'
 import { updateRegistrationPhone } from '@/lib/registrations'
 
 export async function POST(request: Request) {
@@ -13,14 +13,14 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null)
   const phone = body && typeof body.phone === 'string' ? body.phone.trim() : ''
 
-  if (!isValidPhone(phone)) {
+  if (!isValidUsPhone(phone)) {
     return NextResponse.json(
-      { message: 'Telefon raqamni to‘liq kiriting' },
+      { message: 'Telefon raqamni +1 (XXX) XXX-XXXX formatida to‘liq kiriting' },
       { status: 400 },
     )
   }
 
-  const registration = await updateRegistrationPhone(user.id, normalizePhone(phone))
+  const registration = await updateRegistrationPhone(user.id, formatUsPhone(phone))
 
   if (!registration) {
     return NextResponse.json({ message: 'Foydalanuvchi topilmadi' }, { status: 404 })

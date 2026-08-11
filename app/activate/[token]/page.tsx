@@ -1,8 +1,14 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import ActivateForm from './activate-form'
 import { findRegistrationByActivationToken } from '@/lib/registrations'
 
 export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  title: 'Profilni faollashtirish',
+  robots: { index: false, follow: false },
+}
 
 export default async function ActivatePage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params

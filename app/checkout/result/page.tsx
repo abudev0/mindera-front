@@ -5,7 +5,8 @@ import { getCurrentUser } from '@/lib/auth'
 import PaymentResult from './result-client'
 
 export const metadata: Metadata = {
-  title: 'To‘lov natijasi | Mindera',
+  title: 'To‘lov natijasi',
+  robots: { index: false, follow: false },
 }
 
 export const dynamic = 'force-dynamic'

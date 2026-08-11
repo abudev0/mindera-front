@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { formatUsPhone } from '@/lib/phone'
 
 export default function PhoneCompletionModal({ required }: { required: boolean }) {
   const [isOpen, setIsOpen] = useState(required)
+  const [phone, setPhone] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -82,7 +84,10 @@ export default function PhoneCompletionModal({ required }: { required: boolean }
               type="tel"
               inputMode="tel"
               autoComplete="tel"
+              value={phone}
+              onChange={(event) => setPhone(formatUsPhone(event.target.value))}
               placeholder="+1 (XXX) XXX-XXXX"
+              maxLength={17}
               className="h-[54px] rounded-[14px] border border-black/15 bg-[#f5f5f5] px-4 text-[18px] font-bold outline-none focus:border-[#ffc329]"
             />
           </label>

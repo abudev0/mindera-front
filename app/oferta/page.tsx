@@ -8,8 +8,9 @@ import PaymentLogos from '@/components/payment-logos'
 import PrintButton from './print-button'
 
 export const metadata: Metadata = {
-  title: 'Ommaviy oferta | Mindera',
+  title: 'Ommaviy oferta',
   description: 'MINDERA MChJ ta’lim xizmatlarini ko‘rsatish bo‘yicha ommaviy ofertasi.',
+  alternates: { canonical: '/oferta' },
 }
 
 export const dynamic = 'force-static'
