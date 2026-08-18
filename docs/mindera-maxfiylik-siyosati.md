@@ -12,12 +12,10 @@ Mazkur Maxfiylik siyosati “MINDERA” MChJning mindera.uz sayti, ta’lim xizm
 
 1.1. Shaxsga doir ma’lumotlar operatori — “MINDERA” mas’uliyati cheklangan jamiyati:
 
-- STIR: 313042834;
 - yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D;
 - telefon: +998 93 398 09 02;
 - elektron pochta: Botiraliyevyusufbek817@gmail.com;
-- sayt: https://mindera.uz;
-- Telegram: https://t.me/mindera_admin.
+- sayt: https://mindera.uz.
 
 1.2. Maxfiylik yoki shaxsga doir ma’lumotlar bo‘yicha murojaat yuqoridagi aloqa kanallaridan biri orqali yuborilishi mumkin.
 
@@ -144,8 +142,6 @@ Mazkur Maxfiylik siyosati “MINDERA” MChJning mindera.uz sayti, ta’lim xizm
 
 “MINDERA” mas’uliyati cheklangan jamiyati
 
-STIR: 313042834
-
 Yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D
 
 Telefon: +998 93 398 09 02
@@ -153,5 +149,3 @@ Telefon: +998 93 398 09 02
 Email: Botiraliyevyusufbek817@gmail.com
 
 Sayt: https://mindera.uz
-
-Telegram: https://t.me/mindera_admin

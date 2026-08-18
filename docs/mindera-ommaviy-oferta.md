@@ -14,12 +14,10 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 1.1. **Ijrochi (Markaz)** — “MINDERA” mas’uliyati cheklangan jamiyati:
 
-- STIR: 313042834;
 - yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D;
 - telefon: +998 93 398 09 02;
 - elektron pochta: Botiraliyevyusufbek817@gmail.com;
-- rasmiy sayt: https://mindera.uz;
-- Telegram: https://t.me/mindera_admin.
+- rasmiy sayt: https://mindera.uz.
 
 1.2. **Buyurtmachi** — ushbu Ofertani qabul qilgan, xizmat haqini to‘laydigan muomala layoqatiga ega jismoniy shaxs yoki voyaga yetmagan O‘quvchining ota-onasi yoxud boshqa qonuniy vakili.
 
@@ -250,7 +248,6 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 16.1. Buyurtmachi murojaat va talablarini quyidagi usullardan biri orqali yuborishi mumkin:
 
 - elektron pochta: Botiraliyevyusufbek817@gmail.com;
-- Telegram: @mindera_admin;
 - telefon: +998 93 398 09 02;
 - yuridik manzilga yozma murojaat.
 
@@ -292,9 +289,7 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 **IJROCHI REKVIZITLARI**
 
 “MINDERA” mas’uliyati cheklangan jamiyati  
-STIR: 313042834  
 Yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D  
 Telefon: +998 93 398 09 02  
 Email: Botiraliyevyusufbek817@gmail.com  
-Sayt: https://mindera.uz  
-Telegram: @mindera_admin
+Sayt: https://mindera.uz
