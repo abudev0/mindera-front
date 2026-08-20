@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           <LegalDocumentContent blocks={blocks} />
         </article>
       </main>
-      <Footer />
+      <Footer hideLegalAddress />
     </>
   )
 }

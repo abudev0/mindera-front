@@ -14,9 +14,6 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 1.1. **Ijrochi (Markaz)** — “MINDERA” mas’uliyati cheklangan jamiyati:
 
-- yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D;
-- telefon: +998 93 398 09 02;
-- elektron pochta: Botiraliyevyusufbek817@gmail.com;
 - rasmiy sayt: https://mindera.uz.
 
 1.2. **Buyurtmachi** — ushbu Ofertani qabul qilgan, xizmat haqini to‘laydigan muomala layoqatiga ega jismoniy shaxs yoki voyaga yetmagan O‘quvchining ota-onasi yoxud boshqa qonuniy vakili.
@@ -55,13 +52,13 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 3.4. Agar O‘quvchi 18 yoshga to‘lmagan bo‘lsa, Ofertani uning ota-onasi yoki boshqa qonuniy vakili qabul qiladi va Buyurtmachining majburiyatlarini bajaradi.
 
-## 4. Sinov darslari va Kursga qabul qilish
+## 4. Sinov darsi va Kursga qabul qilish
 
-4.1. O‘quvchi dastlabki 2 ta sinov darsida qatnashishi va shundan keyin Kursni davom ettirish yoki davom ettirmaslik haqida qaror qabul qilishi mumkin.
+4.1. O‘quvchi dastlabki 1 ta sinov darsida bepul qatnashishi va shundan keyin Kursni davom ettirish yoki davom ettirmaslik haqida qaror qabul qilishi mumkin.
 
-4.2. Dastlabki 2 ta sinov darsi uchun alohida haq undirilmaydi. O‘quvchi Kursni davom ettirishga qaror qilsa, uchinchi darsda qatnashishidan oldin tanlangan to‘lov rejasi bo‘yicha to‘lovni amalga oshiradi.
+4.2. Dastlabki 1 ta sinov darsi uchun alohida haq undirilmaydi. O‘quvchi Kursni davom ettirishga qaror qilsa, ikkinchi darsda qatnashishidan oldin kamida bir oylik Kurs to‘lovini amalga oshirgan bo‘lishi kerak.
 
-4.3. Sinov darslari davomida O‘quvchining boshlang‘ich bilim darajasi aniqlanishi hamda unga mos Kurs yoki guruh tavsiya qilinishi mumkin.
+4.3. Sinov darsi davomida O‘quvchining boshlang‘ich bilim darajasi aniqlanishi hamda unga mos Kurs yoki guruh tavsiya qilinishi mumkin.
 
 4.4. Sinov darsida qatnashish guruhdagi joy to‘lov amalga oshirilgunga qadar saqlanishini kafolatlamaydi.
 
@@ -97,7 +94,7 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 5.11. Telegram Ijrochining maslahat va texnik qo‘llab-quvvatlash kanali hisoblanadi. Telegram administratoriga o‘tish buyurtmani to‘lash bosqichi emas va administrator karta rekvizitlari yoki tasdiqlash kodlarini qabul qilmaydi.
 
-5.12. To‘lov Uzum Bank tomonidan rad etilsa, uzilib qolsa yoki yakuniy holati darhol aniqlanmasa, Buyurtmachi qayta to‘lov qilishdan oldin saytdagi holatni tekshirishi yoki 16.1-banddagi kanallar orqali Ijrochiga murojaat qilishi lozim. Takroriy va texnik xatoli to‘lovlar 10-bo‘lim tartibida ko‘rib chiqiladi.
+5.12. To‘lov Uzum Bank tomonidan rad etilsa, uzilib qolsa yoki yakuniy holati darhol aniqlanmasa, Buyurtmachi qayta to‘lov qilishdan oldin saytdagi holatni tekshirishi yoki 16.1-bandda ko‘rsatilgan Telegram administratoriga murojaat qilishi lozim. Takroriy va texnik xatoli to‘lovlar 10-bo‘lim tartibida ko‘rib chiqiladi.
 
 ## 6. Darslarni tashkil etish
 
@@ -183,25 +180,23 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 10.2. Buyurtmachi Kursni muddatidan oldin to‘xtatish haqida Ijrochiga yozma yoki elektron ariza yuborishi mumkin.
 
-10.3. Kursdan ixtiyoriy voz kechilganda qaytariladigan summa Buyurtmachi to‘lagan summadan ariza kelib tushguniga qadar ko‘rsatilgan darslar qiymati, foydalanilgan materiallar hamda faqat mazkur buyurtmani bajarish uchun qilingan va hujjat bilan tasdiqlangan qaytarib bo‘lmaydigan xarajatlarni chegirish yo‘li bilan hisoblanadi.
+10.3. Ko‘rsatilgan darslar qiymati, agar buyurtma tasdig‘ida boshqacha tartib belgilanmagan bo‘lsa, chegirmasiz bir oylik tarifning o‘sha oy uchun rejalashtirilgan darslar soniga bo‘lingan qiymati asosida aniqlanadi. Oldindan to‘lov uchun berilgan chegirma faqat to‘liq bajarilgan chegirmali davrga nisbatan saqlanadi.
 
-10.4. Ko‘rsatilgan darslar qiymati, agar buyurtma tasdig‘ida boshqacha tartib belgilanmagan bo‘lsa, chegirmasiz bir oylik tarifning o‘sha oy uchun rejalashtirilgan darslar soniga bo‘lingan qiymati asosida aniqlanadi. Oldindan to‘lov uchun berilgan chegirma faqat to‘liq bajarilgan chegirmali davrga nisbatan saqlanadi.
+10.4. Agar ayni bir buyurtma uchun Buyurtmachidan ikki yoki undan ortiq marta to‘lov olingan bo‘lsa, bitta haqiqiy to‘lovdan tashqari Ijrochi hisobiga amalda kelib tushgan barcha takroriy summalar ko‘rsatilgan xizmatlar qiymati chegirilmasdan to‘liq qaytariladi.
 
-10.5. Agar ayni bir buyurtma uchun Buyurtmachidan ikki yoki undan ortiq marta to‘lov olingan bo‘lsa, bitta haqiqiy to‘lovdan tashqari Ijrochi hisobiga amalda kelib tushgan barcha takroriy summalar ko‘rsatilgan xizmatlar qiymati chegirilmasdan to‘liq qaytariladi.
+10.5. Agar texnik xato tufayli karta yoki hisobdan pul yechilgan, biroq saytda buyurtma muvaffaqiyatli to‘langan deb tasdiqlanmagan bo‘lsa, Ijrochi Bank va to‘lov tizimi ma’lumotlari asosida operatsiya holatini tekshiradi. Mablag‘ Ijrochi hisobiga kelib tushgani tasdiqlansa, Buyurtmachining tanloviga ko‘ra to‘lov buyurtmaga biriktiriladi yoki to‘liq qaytariladi. Mablag‘ Ijrochi hisobiga kelib tushmagan bo‘lsa, Ijrochi Buyurtmachiga operatsiya holatini aniqlash uchun zarur tasdiqni taqdim etadi va xizmat ko‘rsatuvchi Bank yoki to‘lov tizimiga murojaat qilishda ko‘maklashadi.
 
-10.6. Agar texnik xato tufayli karta yoki hisobdan pul yechilgan, biroq saytda buyurtma muvaffaqiyatli to‘langan deb tasdiqlanmagan bo‘lsa, Ijrochi Bank va to‘lov tizimi ma’lumotlari asosida operatsiya holatini tekshiradi. Mablag‘ Ijrochi hisobiga kelib tushgani tasdiqlansa, Buyurtmachining tanloviga ko‘ra to‘lov buyurtmaga biriktiriladi yoki to‘liq qaytariladi. Mablag‘ Ijrochi hisobiga kelib tushmagan bo‘lsa, Ijrochi Buyurtmachiga operatsiya holatini aniqlash uchun zarur tasdiqni taqdim etadi va xizmat ko‘rsatuvchi Bank yoki to‘lov tizimiga murojaat qilishda ko‘maklashadi.
+10.6. To‘lov summasi buyurtmada ko‘rsatilgan summadan ortiq yechilgan va ortiqcha qism Ijrochi hisobiga kelib tushgan bo‘lsa, ortiqcha olingan summa to‘liq qaytariladi.
 
-10.7. To‘lov summasi buyurtmada ko‘rsatilgan summadan ortiq yechilgan va ortiqcha qism Ijrochi hisobiga kelib tushgan bo‘lsa, ortiqcha olingan summa to‘liq qaytariladi.
+10.7. Pulni qaytarish yoki to‘lovni tekshirish uchun Buyurtmachi 16.1-bandda ko‘rsatilgan Telegram administratoriga murojaat yuboradi. Murojaatda F.I.Sh., telefon yoki elektron pochta, Kurs va buyurtma ma’lumoti, to‘lov sanasi va summasi, to‘lov hujjati hamda zarur bo‘lsa bank kartasining faqat oxirgi to‘rtta raqami ko‘rsatiladi. Karta amal qilish muddati, SMS-kod, PIN, CVV/CVC yoki kartaning to‘liq raqamini yuborish talab etilmaydi va mumkin emas.
 
-10.8. Pulni qaytarish yoki to‘lovni tekshirish uchun Buyurtmachi 16.1-banddagi aloqa kanallaridan biri orqali murojaat yuboradi. Murojaatda F.I.Sh., telefon yoki elektron pochta, Kurs va buyurtma ma’lumoti, to‘lov sanasi va summasi, to‘lov hujjati hamda zarur bo‘lsa bank kartasining faqat oxirgi to‘rtta raqami ko‘rsatiladi. Karta amal qilish muddati, SMS-kod, PIN, CVV/CVC yoki kartaning to‘liq raqamini yuborish talab etilmaydi va mumkin emas.
+10.8. Ijrochi murojaatni va zarur ma’lumotlarni olgach, to‘lov holatini 10 ish kunidan kechiktirmay tekshiradi va natijasi haqida Buyurtmachiga xabar beradi. Qaytarish uchun asos tasdiqlansa, summa 10 bank kuni ichida, qoida tariqasida, to‘lov amalga oshirilgan o‘sha vositaga qaytariladi. Bank yoki to‘lov tizimining mablag‘ni kartada aks ettirish muddati ushbu muddatga kirmasligi va ularning ichki qoidalariga bog‘liq bo‘lishi mumkin.
 
-10.9. Ijrochi murojaatni va zarur ma’lumotlarni olgach, to‘lov holatini 10 ish kunidan kechiktirmay tekshiradi va natijasi haqida Buyurtmachiga xabar beradi. Qaytarish uchun asos tasdiqlansa, summa 10 bank kuni ichida, qoida tariqasida, to‘lov amalga oshirilgan o‘sha vositaga qaytariladi. Bank yoki to‘lov tizimining mablag‘ni kartada aks ettirish muddati ushbu muddatga kirmasligi va ularning ichki qoidalariga bog‘liq bo‘lishi mumkin.
+10.9. Dastlabki to‘lov vositasiga qaytarish texnik yoki qonuniy jihatdan imkonsiz bo‘lsa, Ijrochi Buyurtmachini identifikatsiya qilganidan so‘ng mablag‘ni uning nomidagi bank hisobiga qonunchilik va Bank qoidalariga muvofiq qaytarishi mumkin. Pul uchinchi shaxs hisobiga qaytarilmaydi, qonuniy vakillik yoki qonunchilikda nazarda tutilgan boshqa asos hujjat bilan tasdiqlangan holatlar bundan mustasno.
 
-10.10. Dastlabki to‘lov vositasiga qaytarish texnik yoki qonuniy jihatdan imkonsiz bo‘lsa, Ijrochi Buyurtmachini identifikatsiya qilganidan so‘ng mablag‘ni uning nomidagi bank hisobiga qonunchilik va Bank qoidalariga muvofiq qaytarishi mumkin. Pul uchinchi shaxs hisobiga qaytarilmaydi, qonuniy vakillik yoki qonunchilikda nazarda tutilgan boshqa asos hujjat bilan tasdiqlangan holatlar bundan mustasno.
+10.10. Agar xizmat Ijrochi aybi bilan ko‘rsatilmasa yoki jiddiy kamchilik oqilona muddatda bartaraf etilmasa, Buyurtmachi kamchilikni bartaraf etish, kompensatsion dars, narxni mutanosib kamaytirish yoki ko‘rsatilmagan xizmat uchun to‘langan summani qaytarishni talab qilishga haqli.
 
-10.11. Agar xizmat Ijrochi aybi bilan ko‘rsatilmasa yoki jiddiy kamchilik oqilona muddatda bartaraf etilmasa, Buyurtmachi kamchilikni bartaraf etish, kompensatsion dars, narxni mutanosib kamaytirish yoki ko‘rsatilmagan xizmat uchun to‘langan summani qaytarishni talab qilishga haqli.
-
-10.12. Takroriy, texnik xato bilan amalga oshirilgan yoki ortiqcha to‘lovni qaytarishda Ijrochi tomonidan ko‘rsatilgan darslar qiymati chegirilmaydi. Ushbu bo‘lim qonunchilikda Buyurtmachi va O‘quvchiga berilgan huquqlarni cheklamaydi.
+10.11. Takroriy, texnik xato bilan amalga oshirilgan yoki ortiqcha to‘lovni qaytarishda Ijrochi tomonidan ko‘rsatilgan darslar qiymati chegirilmaydi. Ushbu bo‘lim qonunchilikda Buyurtmachi va O‘quvchiga berilgan huquqlarni cheklamaydi.
 
 ## 11. Shartnomani muzlatish va guruhni almashtirish
 
@@ -245,11 +240,7 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 
 ## 16. Murojaatlar va nizolarni hal qilish
 
-16.1. Buyurtmachi murojaat va talablarini quyidagi usullardan biri orqali yuborishi mumkin:
-
-- elektron pochta: Botiraliyevyusufbek817@gmail.com;
-- telefon: +998 93 398 09 02;
-- yuridik manzilga yozma murojaat.
+16.1. Buyurtmachi murojaat va talablarini Telegram administratori — https://t.me/mindera_admin orqali yuborishi mumkin.
 
 16.2. Murojaatda Buyurtmachining F.I.Sh., aloqa ma’lumoti, tanlangan Kurs, to‘lov ma’lumoti, talab mazmuni va uni asoslovchi hujjatlar ko‘rsatilishi tavsiya etiladi.
 
@@ -289,7 +280,4 @@ Oferta shartlarini qabul qilishdan oldin ushbu hujjatni to‘liq o‘qib chiqing
 **IJROCHI REKVIZITLARI**
 
 “MINDERA” mas’uliyati cheklangan jamiyati  
-Yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D  
-Telefon: +998 93 398 09 02  
-Email: Botiraliyevyusufbek817@gmail.com  
 Sayt: https://mindera.uz

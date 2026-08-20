@@ -8,16 +8,13 @@
 
 Mazkur Maxfiylik siyosati “MINDERA” MChJning mindera.uz sayti, ta’lim xizmatlari, murojaatlar va Internet-ekvayring orqali to‘lovlar bilan bog‘liq shaxsga doir ma’lumotlarni qayta ishlash tartibini belgilaydi.
 
-## 1. Operator va aloqa ma’lumotlari
+## 1. Operator
 
 1.1. Shaxsga doir ma’lumotlar operatori — “MINDERA” mas’uliyati cheklangan jamiyati:
 
-- yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D;
-- telefon: +998 93 398 09 02;
-- elektron pochta: Botiraliyevyusufbek817@gmail.com;
 - sayt: https://mindera.uz.
 
-1.2. Maxfiylik yoki shaxsga doir ma’lumotlar bo‘yicha murojaat yuqoridagi aloqa kanallaridan biri orqali yuborilishi mumkin.
+1.2. Maxfiylik yoki shaxsga doir ma’lumotlar bo‘yicha murojaat rasmiy saytda ko‘rsatilgan mavjud aloqa kanallari orqali yuborilishi mumkin.
 
 ## 2. Qayta ishlanadigan ma’lumotlar
 
@@ -141,11 +138,5 @@ Mazkur Maxfiylik siyosati “MINDERA” MChJning mindera.uz sayti, ta’lim xizm
 **OPERATOR REKVIZITLARI**
 
 “MINDERA” mas’uliyati cheklangan jamiyati
-
-Yuridik manzil: Toshkent shahri, Yashnobod tumani, Olmos mahallasi, Dilnur 4-berk ko‘chasi, 58-D
-
-Telefon: +998 93 398 09 02
-
-Email: Botiraliyevyusufbek817@gmail.com
 
 Sayt: https://mindera.uz

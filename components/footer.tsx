@@ -1,10 +1,14 @@
 import Link from 'next/link'
 import PaymentSecurity from '@/components/payment-security'
 
-export default function Footer() {
+export default function Footer({ hideLegalAddress = false }: { hideLegalAddress?: boolean }) {
   return (
     <footer className="w-full bg-[#202020] text-white print:hidden">
-      <div className="mx-auto grid max-w-[1100px] gap-10 px-9 py-7 md:grid-cols-3 md:items-start md:px-12">
+      <div
+        className={`mx-auto grid max-w-[1100px] gap-10 px-9 py-7 md:items-start md:px-12 ${
+          hideLegalAddress ? 'md:grid-cols-2' : 'md:grid-cols-3'
+        }`}
+      >
         <div>
           <p className="max-w-[190px] text-[22px] font-medium leading-[1.2]">
             Barcha huquqlar himoyalangan.
@@ -25,18 +29,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
-          <h4 className="mb-5 text-[28px] font-extrabold leading-none">Yuridik manzil:</h4>
-          <p className="text-[22px] font-medium leading-[1.2]">
-            Toshkent shahri,
-            <br />
-            Yashnobod tumani,
-            <br />
-            Olmos mahallasi,
-            <br />
-            Dilnur 4-berk ko&apos;chasi, 58-D
-          </p>
-        </div>
+        {!hideLegalAddress && (
+          <div>
+            <h4 className="mb-5 text-[28px] font-extrabold leading-none">Yuridik manzil:</h4>
+            <p className="text-[22px] font-medium leading-[1.2]">
+              Toshkent shahri,
+              <br />
+              Yashnobod tumani,
+              <br />
+              Olmos mahallasi,
+              <br />
+              Dilnur 4-berk ko&apos;chasi, 58-D
+            </p>
+          </div>
+        )}
 
         <div>
           <h4 className="mb-5 text-[28px] font-extrabold leading-none">Tezkor bog&apos;laning</h4>

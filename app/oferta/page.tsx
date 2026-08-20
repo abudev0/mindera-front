@@ -42,7 +42,7 @@ export default function OfertaPage() {
           </section>
         </article>
       </main>
-      <Footer />
+      <Footer hideLegalAddress />
     </>
   )
 }
